@@ -1,0 +1,257 @@
+<!--
+README / Deployment & Editing Instructions
+
+File: index.html (single-file portfolio)
+
+How to preview locally:
+1. Save this file as index.html.
+2. Open it in your browser (double-click or right-click -> Open with -> Browser).
+
+How to host on GitHub Pages (free):
+1. Create a GitHub repository named `nivedha-portfolio` (or any name).
+2. Add this index.html to the repo (either upload via web UI or git push).
+3. Go to Settings -> Pages -> Source -> select branch `main` (or `master`) and folder `/ (root)` -> Save.
+4. After a few minutes your site will be live at: https://<your-github-username>.github.io/<repo-name>
+
+To use repository as a template for others / reuse:
+- Add a README.md (optional) and push. Mark the repo as a template (Settings -> Template repository) if you want.
+
+How to modify content quickly (what to change in the file):
+- Replace "Nivedha Gurumoorthy" and contact details in the top section.
+- Update the ABOUT paragraph (search for "ABOUT_ME_TEXT").
+- Projects: For each project card, replace the title, description, tech tags, and link (look for PROJECT_CARD placeholders).
+- Resume Link: update the href of the "Download Resume" button (id="resumeLink").
+- Social links: update GitHub/LinkedIn/email in the contact section (ids: githubLink, linkedinLink, emailLink).
+- Colors & fonts: edit :root CSS variables near the top of the <style> block.
+
+Optional: Add separate files (assets, images) by editing <img> src values and pushing those files to the repo.
+
+Sample Git commands to push:
+git init
+git add index.html
+git commit -m "Initial portfolio"
+git branch -M main
+git remote add origin https://github.com/<your-username>/Niranjana-portfolio.git
+git push -u origin main
+
+Need help deploying? Tell me your GitHub username and I can prepare the README & commit commands customized for you.
+-->
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Niranjana Gurumoorthy — QA Engineer</title>
+  <meta name="description" content="Portfolio of Niranjana — Software Tester with 3 years experience in Manual & Automation testing (Selenium, Java, TestNG)." />
+
+  <style>
+    :root{
+      --bg:#eef1f7; /* light professional metallic */
+      --card:#ffffff; /* clean white cards */
+      --muted:#6c7480; /* subtle grey text */
+      --accent:#5a6fd1; /* soft metallic indigo */
+      --accent-2:#3bb4c8; /* soft teal */
+      --text:#1a1d21; /* dark grey for readability */
+      --glass: rgba(255,255,255,0.4);
+      --radius:14px;
+      --maxw:1000px;
+      --ff: 'Segoe UI', Roboto, system-ui, -apple-system;
+}
+    *{box-sizing:border-box}
+    body{
+    font-family:var(--ff);
+    margin:0;
+    background: linear-gradient(180deg,#f4f6fa 0%, #e9edf3 60%); /* clean light background */
+    color:var(--text);
+    -webkit-font-smoothing:antialiased;
+}
+    .wrap{max-width:var(--maxw);margin:28px auto;padding:24px}
+    header{display:flex;gap:18px;align-items:center;position:relative;padding-bottom:20px;border-bottom:2px solid rgba(0,0,0,0.05);}
+    .avatar{width:90px;height:90px;border-radius:16px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;font-weight:700;color:white;font-size:30px}
+    h1{margin:0;font-size:26px}
+    .subtitle{color:var(--muted);margin-top:6px}
+
+    /* layout */
+    .grid{display:grid;grid-template-columns:1fr 340px;gap:22px;margin-top:22px}
+    .card{background:var(--card);padding:18px;border-radius:var(--radius);box-shadow:0 6px 18px rgba(2,6,23,0.1);transition:all 0.25s ease;}
+
+    /* left column */
+    .hero{padding:16px}
+    .ctas{display:flex;gap:12px;margin-top:14px}
+    .btn{background:linear-gradient(90deg,var(--accent),var(--accent-2));border:none;padding:10px 14px;border-radius:10px;color:white;font-weight:600;cursor:pointer;text-decoration:none}
+    .ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--text);padding:9px 12px;border-radius:10px}
+
+    /* projects */
+    .card:hover{transform:translateY(-4px); box-shadow:0 10px 22px rgba(0,0,0,0.12);}
+    .projects{display:grid;gap:12px}
+    .proj-card{
+      background:var(--glass);
+      padding:14px;
+      border-radius:12px;
+      border:1px solid rgba(0,0,0,0.06);
+      transition:all 0.3s ease;
+      cursor:pointer;
+    }
+    .proj-card:hover{
+      transform:translateY(-6px) scale(1.02);
+      border-color:var(--accent);
+      box-shadow:0 12px 28px rgba(0,0,0,0.15);
+      background:rgba(255,255,255,0.55);
+    }
+
+    .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+    .tag{font-size:12px;padding:6px 8px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);color:var(--muted)}
+
+    /* skills */
+    .skill-grid{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+    .skill{background:rgba(255,255,255,0.03);padding:8px 10px;border-radius:8px;font-size:13px;color:var(--muted)}
+
+    /* right column */
+    .side h3{margin:0 0 10px 0}
+    .contact a{display:inline-block;margin-right:8px;text-decoration:none;color:var(--text)}
+    footer{margin-top:18px;color:var(--muted);font-size:13px;text-align:center}
+
+    /* responsive */
+    @media (max-width:880px){
+      .grid{grid-template-columns:1fr;}
+      .avatar{width:72px;height:72px;font-size:24px}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="avatar">NG</div>
+      <div>
+        <h1>Niranjana Gurumoorthy</h1>
+        <div class="subtitle">Software Tester — Manual & Automation | 3 years experience</div>
+        <div style="margin-top:10px;color:var(--muted);font-size:14px">Selenium · Java · TestNG · Maven · GitHub Actions · Azure DevOps  · SQL</div>
+      </div>
+      <div style="position:absolute; right:10px; top:10px; display:flex; gap:10px;">
+        <img src="https://cdn-icons-png.flaticon.com/512/906/906334.png" width="38" height="38"/>
+        <img src="https://cdn-icons-png.flaticon.com/512/1000/1000921.png" width="38" height="38"/>
+        <img src="https://cdn-icons-png.flaticon.com/512/3068/3068375.png" width="38" height="38"/>
+      </div>
+</header>
+
+    <div class="grid">
+      <!-- LEFT -->
+      <main>
+        <section class="card hero">
+          <h2 style="margin-top:0">About</h2>
+          <p id="aboutText">I’m a Software Tester with 3 years of experience in manual and automation testing, 
+            specializing in Selenium WebDriver, Java, TestNG, Maven, and CI/CD pipelines. I work extensively with dynamic XPath creation,
+             API testing (Postman), regression suites, and framework-level enhancements. I enjoy building efficient, 
+             maintainable test automation frameworks and identifying high-impact defects that improve product quality. 
+            Passionate about clean test design, scalability, and continuous improvement in QA engineering
+</p>
+
+          <div class="ctas">
+            <a class="btn" id="resumeLink" href="Niranjana-Gurumoorthy-Resume.pdf">Download Resume</a>
+            <a class="ghost" href="https://github.com/your-username/nivedha-portfolio" target="_blank">View Code</a>
+          </div>
+        </section>
+
+        <section class="card" style="margin-top:14px">
+          <h2>Featured Projects</h2>
+          <div class="projects" style="margin-top:12px">
+            <!-- Project 1 -->
+            <div class="proj-card">
+              <strong>Web Automation Framework — E-Commerce App</strong>
+              <div class="tags">
+                <span class="tag">Selenium</span>
+                <span class="tag">Java</span>
+                <span class="tag">TestNG</span>
+                <span class="tag">GitHub Actions</span>
+              </div>
+              <p style="color:var(--muted);font-size:14px;margin-top:8px">Built a Page Object Model based framework covering login, search, add-to-cart and checkout flows, integrated with CI for nightly runs. Implemented dynamic XPath strategies and reusable utilities.</p>
+              <div style="margin-top:8px"><a href="#" class="ghost">Repository</a> <a href="#" class="ghost">Live Test Site</a></div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="proj-card">
+              <strong>XPath Practice Suite — 30+ locators</strong>
+              <div class="tags"><span class="tag">XPath</span><span class="tag">Selenium</span></div>
+              <p style="color:var(--muted);font-size:14px;margin-top:8px">Collection of advanced and resilient locators demonstrating axes, contains(), starts-with(), and table DOM traversal for flaky UIs.</p>
+              <div style="margin-top:8px"><a href="#" class="ghost">Repository</a></div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="proj-card">
+              <strong>Manual Testing - Smart Tax Filing System</strong>
+              <div class="tags"><span class="tag">Test Cases</span><span class="tag">RTM</span><span class="tag">Azure DevOps</span></div>
+              <p style="color:var(--muted);font-size:14px;margin-top:8px">Prepared 50+ test cases, executed test cycles, logged 20+ defects and completed RTM and test summary reports for a tax-filing web app.</p>
+              <div style="margin-top:8px"><a href="#" class="ghost">Test Artifacts</a></div>
+            </div>
+
+          </div>
+        </section>
+
+        <section class="card" style="margin-top:14px">
+          <h2>Short Automation Demos</h2>
+          <div style="color:var(--muted);font-size:14px">Small, focused scripts showing dropdown handling, custom wait methods, alert handling, and screenshot utilities. Great for quick portfolio demos during interviews.</div>
+        </section>
+
+        <section class="card" style="margin-top:14px">
+          <h2>API Testing</h2>
+          <p style="color:var(--muted);font-size:14px">Performed CRUD API testing using Postman, created parameterized collections, validated schemas and response assertions. (Optionally show Postman collection link).</p>
+        </section>
+
+      </main>
+
+      <!-- RIGHT -->
+      <aside class="side">
+        <div class="card contact">
+          <h3>Contact</h3>
+          <p style="color:var(--muted);margin:6px 0">📍 Chennai, India</p>
+
+          <div style="margin-top:10px; display:flex; flex-direction:column; gap:6px; font-size:14px;">
+            <a id="emailLink" href="mailto:nivedha.gurumoorthy@gmail.com" style="color:var(--text); text-decoration:none;">
+              ✉️  nivedha.gurumoorthy@gmail.com
+            </a>
+            <a id="linkedinLink" href=" https://www.linkedin.com/in/niranjana-gurumoorthy/" target="_blank" style="color:var(--text); text-decoration:none;">
+              🔗  LinkedIn Profile
+            </a>
+            <a id="githubLink" href="https://github.com/niranjanaguru2605" target="_blank" style="color:var(--text); text-decoration:none;">
+              💻  GitHub Profile
+            </a>
+          </div>
+
+          <h3 style="margin-top:18px">Skills</h3>
+        </div>
+        
+
+        <div class="card" style="margin-top:14px">
+          <h3>Quick Stats</h3>
+          <div style="display:flex;gap:12px;margin-top:8px">
+            <div style="flex:1;background:var(--glass);padding:10px;border-radius:10px;text-align:center">
+              <div style="font-size:20px;font-weight:700">3</div>
+              <div style="color:var(--muted);font-size:13px">Years</div>
+            </div>
+            <div style="flex:1;background:var(--glass);padding:10px;border-radius:10px;text-align:center">
+              <div style="font-size:20px;font-weight:700">90%</div>
+              <div style="color:var(--muted);font-size:13px">Automation Coverage (example)</div>
+            </div>
+          </div>
+        </div>
+
+      </aside>
+    </div>
+
+    <footer>
+      Built with ❤️ • Open to work • Need edits? Tell me what to change and I’ll update the file.
+    </footer>
+  </div>
+
+  <script>
+    // Quick JS helpers to let user edit certain fields easily (no build required)
+    // Replace these variables in file to personalize once, or use the browser's console to update live.
+
+    // Example: document.getElementById('aboutText').innerText = 'New about me text...';
+
+    // Auto-replace demo links with placeholder if left empty
+    document.querySelectorAll('a.ghost').forEach(a=>{ if(a.href.endsWith('#')) a.style.opacity=0.8;});
+  </script>
+</body>
+</html>
